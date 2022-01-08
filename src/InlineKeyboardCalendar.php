@@ -69,11 +69,11 @@ class InlineKeyboardCalendar
     $keyboard = [];
 
     $keyboard[] = [
-      ['text' => $this->month . ' ' . $this->year, 'callback_data' => $this->month . $this->year]
+      ['text' => $this->month . ' ' . $this->year, 'callback_data' => 'ignore::' . $this->month . $this->year]
     ];
 
     foreach ($arrays as $array) {
-      $header[] = ['text' => $array, 'callback_data' => $array];
+      $header[] = ['text' => $array, 'callback_data' => 'ignore::' . $array];
     }
 
     $keyboard[] = $header;
@@ -83,9 +83,9 @@ class InlineKeyboardCalendar
       $row = [];
         foreach ($arrays as $keyArray => $valueArray) {
           if (isset($lists[$keyList][$keyArray])) {
-            $row[] = ['text' => $lists[$keyList][$keyArray], 'callback_data' => $this->year . '-' . $this->month . '-' . $lists[$keyList][$keyArray]];
+            $row[] = ['text' => $lists[$keyList][$keyArray], 'callback_data' => 'day::' . $this->year . '-' . $this->month . '-' . $lists[$keyList][$keyArray]];
           } else {
-            $row[] = ['text' => '-', 'callback_data' => $keyArray];
+            $row[] = ['text' => '-', 'callback_data' => 'ignore::' . $keyArray];
           }
         }
         $keyboard[] = $row;
@@ -93,8 +93,8 @@ class InlineKeyboardCalendar
 
     $keyboard[] =
     [
-      ['text' => '« Prev Month', 'callback_data' => $this->prevMonth($this->year . '-' . $this->month)],
-      ['text' => 'Next Month »', 'callback_data' => $this->nextMonth($this->year . '-' . $this->month)]
+      ['text' => '« Prev Month', 'callback_data' => 'prev::' . $this->prevMonth($this->year . '-' . $this->month)],
+      ['text' => 'Next Month »', 'callback_data' => 'next' . $this->nextMonth($this->year . '-' . $this->month)]
 
     ];
 
