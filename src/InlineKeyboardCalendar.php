@@ -92,7 +92,7 @@ class InlineKeyboardCalendar
     $keyboard[] =
     [
       ['text' => '« Prev Month', 'callback_data' => 'prev::' . $this->prevMonth($this->year . '-' . $this->month)],
-      ['text' => 'Next Month »', 'callback_data' => 'next' . $this->nextMonth($this->year . '-' . $this->month)]
+      ['text' => 'Next Month »', 'callback_data' => 'next::' . $this->nextMonth($this->year . '-' . $this->month)]
 
     ];
 
