@@ -13,7 +13,6 @@ class InlineKeyboardCalendar
   protected $date;
   protected $year;
   protected $month;
-  protected $days;
 
   /**
    * @param date $date
@@ -34,10 +33,9 @@ class InlineKeyboardCalendar
   private function listOfDate()
   {
 
-    list($year, $month, $days) = explode('-', $this->date);
+    list($year, $month) = explode('-', $this->date);
     $this->month = $month;
     $this->year = $year;
-    $this->days = $days;
 
     $start_date = "01-".$month."-".$year;
     $start_time = strtotime($start_date);
